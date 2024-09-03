@@ -1,5 +1,4 @@
 import BrandLogo from "@/components/common/BrandLogo";
-import Link from "next/link";
 
 export default function Home() {
   return (

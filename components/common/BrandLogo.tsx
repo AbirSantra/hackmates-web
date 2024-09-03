@@ -6,7 +6,7 @@ import BrandIconOnly from '@/public/assets/brand/BrandIconOnly.svg'
 import BrandIconOnlyDark from '@/public/assets/brand/BrandIconOnlyDark.svg'
 import BrandIconOnlyLight from '@/public/assets/brand/BrandIconOnlyLight.svg'
 
-type BrandLogoProps = {
+interface BrandLogoProps {
     iconOnly?: boolean,
     theme?: "light" | "dark"
 }
