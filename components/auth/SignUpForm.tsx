@@ -77,7 +77,7 @@ const SignUpForm = () => {
           )}
         />
         <Button type="submit" className="w-full">
-          Submit
+          Sign Up
         </Button>
       </form>
     </Form>
