@@ -1,20 +1,25 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { AtSign, Eye, Github, KeyRound, EyeOff } from "lucide-react";
+import {
+  AtSign,
+  Eye,
+  Github,
+  KeyRound,
+  EyeOff,
+  AtSignIcon,
+} from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import GithubLogo from "@/public/assets/socials/github-white.svg";
-import AppInput from "@/components/common/AppInput";
+import AppInput from "@/components/app-ui/AppInput";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import SignUpForm from "@/components/auth/SignUpForm";
 
 const SignUpPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "johndoe@gmail.com",
-    password: "12345678",
-  });
-
-  //form header
   const HeaderCard = () => {
     return (
       <div className="flex flex-col">
@@ -51,68 +56,6 @@ const SignUpPage = () => {
     );
   };
 
-  //signup form auth
-  const SignUpForm = () => {
-    return (
-      <form className="space-y-4">
-        {/* email input */}
-        <AppInput
-          type="email"
-          placeholder="Enter your email address"
-          id="email"
-          value={formData.email}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              email: e.target.value,
-            })
-          }
-          icon={<AtSign strokeWidth={2.3} className="h-4 w-4" />}
-        />
-
-        <div className="space-y-2">
-          {/* password input */}
-          <AppInput
-            type={showPassword ? "text" : "password"}
-            placeholder="Create a passkey"
-            id="passkey"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                password: e.target.value,
-              })
-            }
-            icon={<KeyRound strokeWidth={2.3} className="h-4 w-4" />}
-          />
-
-          <div className="flex w-full justify-end">
-            <button
-              type="button"
-              onClick={() => {
-                setShowPassword((prev) => !prev);
-              }}
-              className="flex flex-row items-center font-brand text-sm font-semibold text-cyan-500"
-            >
-              {showPassword ? (
-                <Eye strokeWidth={2.3} className="mr-1 h-4 w-4" />
-              ) : (
-                <EyeOff strokeWidth={2.3} className="mr-1 h-4 w-4" />
-              )}
-              Hide
-            </button>
-          </div>
-        </div>
-        <Button
-          type="submit"
-          className="w-full bg-primary font-brand font-medium"
-        >
-          Sign Up
-        </Button>
-      </form>
-    );
-  };
-
   //policies footer card
   const FooterCard = () => {
     return (
@@ -128,7 +71,6 @@ const SignUpPage = () => {
       </span>
     );
   };
-
   return (
     <div className="flex w-full max-w-[340px] flex-col gap-6">
       <HeaderCard />
