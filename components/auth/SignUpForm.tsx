@@ -8,21 +8,36 @@ import AppInput from "../app-ui/AppInput";
 import { AtSignIcon, KeyRoundIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
-const SignUpFormSchma = z.object({
+const SignUpFormSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z
+    .string()
+    .min(8)
+    .max(20)
+    .refine((password) => /[A-Z]/.test(password), {
+      message: "Password must contain at least one uppercase letter",
+    })
+    .refine((password) => /[a-z]/.test(password), {
+      message: "Password must contain at least one lowercase letter",
+    })
+    .refine((password) => /[0-9]/.test(password), {
+      message: "Password must contain at least one number",
+    })
+    .refine((password) => /[!@#$%^&*]/.test(password), {
+      message: "Password must contain at least one special character",
+    }),
 });
 
 const SignUpForm = () => {
-  const form = useForm<z.infer<typeof SignUpFormSchma>>({
-    resolver: zodResolver(SignUpFormSchma),
+  const form = useForm<z.infer<typeof SignUpFormSchema>>({
+    resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof SignUpFormSchma>) {
+  function onSubmit(values: z.infer<typeof SignUpFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
@@ -39,7 +54,7 @@ const SignUpForm = () => {
               <AppInput
                 type={"text"}
                 placeholder="Enter your email address"
-                icon={<AtSignIcon strokeWidth={2.3} className="h-4 w-4" />}
+                icon={<AtSignIcon strokeWidth={2} className="h-4 w-4" />}
                 {...field}
               />
               <FormMessage />
@@ -54,7 +69,7 @@ const SignUpForm = () => {
               <AppInput
                 type={"password"}
                 placeholder="Create a passkey"
-                icon={<KeyRoundIcon strokeWidth={2.3} className="h-4 w-4" />}
+                icon={<KeyRoundIcon strokeWidth={2} className="h-4 w-4" />}
                 {...field}
               />
               <FormMessage />
