@@ -1,48 +1,44 @@
-import Image from "next/image"
-import AuthIllustration from '@/public/assets/AuthIllustr.svg'
-import BrandLogo from "@/components/common/BrandLogo"
-import Link from "next/link"
+import Image from "next/image";
+import AuthIllustration from "@/public/assets/AuthIllustr.svg";
+import BrandLogo from "@/components/common/BrandLogo";
+import Link from "next/link";
+import BrandLogoWithName from "@/components/common/BrandLogoWithName";
 
 export default function AuthLayout({
-    children
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
-    const BrandCard = () => {
-        return (
-            <span className="flex flex-row gap-2 items-center">
-                <span className="w-6 h-6">
-                    <BrandLogo />
-                </span>
-                <p className="font-brand font-semibold text-lg">HackMates</p>
-            </span>
-        )
-    }
-
-    return (
-        <div className="w-full h-dvh flex lg:flex-row flex-col-reverse relative bg-zinc-100">
-            <Link href={'/'} className="absolute lg:top-12 lg:left-12 top-8 left-8">
-                <BrandCard />
-            </Link>
-            <section className="lg:w-1/2 lg:h-dvh h-min flex flex-col items-center justify-center md:flex lg:rounded-r-[32px] rounded-t-[32px] lg:rounded-tl-none overflow-hidden bg-white">
-                {children}
-            </section>
-            <section className="w-full flex md:flex-1 flex-col items-center justify-center select-none ">
-                <Image
-                    src={AuthIllustration}
-                    alt="auth illustration"
-                    width={600}
-                    height={600}
-                    className="lg:w-[500px] lg:h-[500px] w-80 h-80 object-cover"
-                    placeholder="empty"
-                    draggable="false"
-                />
-                <p className="hidden lg:block md:block font-brand font-semibold lg:text-3xl md:text-2xl text-center text-zinc-700">
-                    Bringing teams together <br />
-                    to turn ideas into reality
-                </p>
-            </section>
+  return (
+    <div className="relative flex min-h-dvh w-full flex-col-reverse bg-zinc-100 lg:flex-row">
+      <section className="flex h-full flex-col rounded-t-[32px] bg-white p-6 shadow-2xl md:flex lg:h-dvh lg:w-1/2 lg:rounded-r-[32px] lg:rounded-tl-none lg:shadow-sm">
+        <div className="hidden self-start justify-self-start lg:flex">
+          <BrandLogoWithName />
         </div>
-    )
+        <div className="flex w-full flex-1 items-center justify-center">
+          {children}
+        </div>
+      </section>
+      <section className="flex w-full flex-1 select-none flex-col items-center gap-4 p-6 lg:justify-center">
+        <div className="self-start justify-self-start lg:hidden">
+          <BrandLogoWithName />
+        </div>
+        <div className="my-auto flex w-full max-w-sm lg:my-0 lg:max-w-lg">
+          <Image
+            src={AuthIllustration}
+            alt="auth illustration"
+            width={600}
+            height={600}
+            className="h-full w-full object-contain"
+            placeholder="empty"
+            draggable="false"
+          />
+        </div>
+        <p className="hidden text-center font-brand font-semibold text-zinc-700 lg:block lg:text-3xl">
+          Bringing teams together <br />
+          to turn ideas into reality
+        </p>
+      </section>
+    </div>
+  );
 }
