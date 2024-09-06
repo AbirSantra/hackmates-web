@@ -16,7 +16,7 @@ export default function AuthLayout({
           {children}
         </div>
       </section>
-      <section className="flex w-full flex-1 select-none flex-col items-center gap-4 p-6 lg:justify-center">
+      <section className="flex w-full flex-1 select-none flex-col items-center gap-4 p-6 py-4 lg:justify-center">
         <AuthHeader view="small" />
         <div className="my-auto flex w-full max-w-sm lg:my-0 lg:max-w-lg">
           <Image
