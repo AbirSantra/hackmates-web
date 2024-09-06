@@ -12,11 +12,8 @@ const SignUpPage = () => {
         <h2 className="font-brand text-[28px] font-semibold tracking-normal text-zinc-950 antialiased">
           Start building today!
         </h2>
-        <p className="space-y-2 font-body text-xs font-medium text-muted-foreground">
-          Already have an account?{" "}
-          <a href={"/signin"} className="font-brand text-primary">
-            Sign in
-          </a>
+        <p className="space-y-2 font-body text-xs font-semibold text-muted-foreground">
+          Sign Up below to get started.
         </p>
       </div>
       <div className="flex flex-col gap-4">

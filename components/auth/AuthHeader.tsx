@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import BrandLogoWithName from "../common/BrandLogoWithName";
-import { usePathname } from "next/navigation";
+import { ArrowRight, MoveRightIcon } from "lucide-react";
 import Link from "next/link";
-import { MoveRightIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
+import BrandLogoWithName from "../common/BrandLogoWithName";
 
 interface viewType {
   view: "large" | "small";
@@ -14,7 +13,7 @@ const AuthHeader = ({ view }: viewType) => {
 
   return (
     <div
-      className={`flex w-full items-center justify-between ${view === "large" ? "hidden lg:flex" : "lg:hidden "}`}
+      className={`flex w-full items-center justify-between ${view === "large" ? "hidden lg:flex" : "lg:hidden"}`}
     >
       <div className={`self-start justify-self-start`}>
         <BrandLogoWithName />
@@ -23,14 +22,14 @@ const AuthHeader = ({ view }: viewType) => {
         <Link href={"/signin"}>
           <span className="flex items-center gap-2 font-brand text-sm font-medium text-muted-foreground">
             Sign in
-            <MoveRightIcon strokeWidth={2} />
+            <ArrowRight size={14} strokeWidth={3} />
           </span>
         </Link>
       ) : path === "/signin" ? (
         <Link href={"/signup"}>
           <span className="flex items-center gap-2 font-brand text-sm font-medium text-muted-foreground">
             Sign up
-            <MoveRightIcon strokeWidth={2} />
+            <ArrowRight size={14} strokeWidth={3} />
           </span>
         </Link>
       ) : null}

@@ -76,8 +76,8 @@ const SignUpForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
-          Submit
+        <Button type="submit" className="w-full font-brand">
+          Sign Up
         </Button>
       </form>
     </Form>
