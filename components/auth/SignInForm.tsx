@@ -5,7 +5,7 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AtSignIcon, KeyRoundIcon } from "lucide-react";
@@ -74,7 +74,7 @@ const SignInForm = () => {
         <Button type="submit" className="w-full font-brand">
           Sign In
         </Button>
-        
+
         {/* rememberUser checkbox contfirmations */}
         <FormField
           control={form.control}
